@@ -6,10 +6,14 @@ let currentRoundNumber = 1;
 const generateTarget = () => Math.floor(Math.random() * 9);
 
 
+const getAbsoluteDistance = (x, y) => {
+  return Math.abs(x - y);
+}
+
 const compareGuesses = (hGuess, cGuess, secret = generateTarget) => {
-  if (Math.abs(hGuess - secret) < Math.abs(cGuess - secret)) {
+  if (getAbsoluteDistance(hGuess, secret) < getAbsoluteDistance(cGuess, secret)) {
     return true;
-  } else if (Math.abs(cGuess - secret) < Math.abs(hGuess - secret)) {
+  } else if (getAbsoluteDistance(cGuess, secret) < getAbsoluteDistance(hGuess, secret)) {
     return false;
   } else {
     return true;
